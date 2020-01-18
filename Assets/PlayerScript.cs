@@ -13,6 +13,6 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<CharacterController>().transform.Translate(new Vector3(0.0f, 0.0f, 1.0f));
+        GetComponent<CharacterController>().transform.Translate(new Vector3(0.0f, 0.0f, 0.2f));
     }
 }
