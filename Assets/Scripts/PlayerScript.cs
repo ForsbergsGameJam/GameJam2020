@@ -46,7 +46,7 @@ public class PlayerScript : MonoBehaviour
             if (GetComponent<CharacterController>().transform.position.z > trapZone.transform.position.z)
                 continue;
 
-            Debug.Log("player z: "+ GetComponent<CharacterController>().transform.position.z+"   trap zone z: " +trapZone.transform.position.z);
+            //Debug.Log("player z: "+ GetComponent<CharacterController>().transform.position.z+"   trap zone z: " +trapZone.transform.position.z);
             float dist_to_trapzone = Vector3.Distance(trapZone.transform.position, GetComponent<CharacterController>().transform.position);
 
             if (closest_valid_trapzone == null)
@@ -63,7 +63,7 @@ public class PlayerScript : MonoBehaviour
 
         if (closest_valid_trapzone != null && Vector3.Distance(closest_valid_trapzone.transform.position, player_camera_pos) > 20.0f )
             closest_valid_trapzone = null;
-
+        return;
         if (closest_valid_trapzone)
             Debug.LogFormat("Closest TrapZone is " + closest_valid_trapzone.gameObject.name);
         else
