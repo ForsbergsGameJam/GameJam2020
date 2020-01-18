@@ -38,12 +38,14 @@ public class TrapZoneScript : MonoBehaviour
                         c.transform.position = new Vector3(x, 0.0f, c.transform.position.z);
                         c.GetComponent<MeshRenderer>().enabled = true;
                     }
-                    if (c.parent.name == "Street")
+                    else if (c.name == "s1" || c.name == "s2" || c.name == "s3" || c.name == "sb1" || c.name == "sb2" )
                     {
+                        c.GetComponent<MeshRenderer>().enabled = false;
                     }
+
                 }
                 break;
 
-
-    }
+                }
+        }
 }
