@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - TrapZone
+  - blade
   layers:
   - Default
   - TransparentFX
