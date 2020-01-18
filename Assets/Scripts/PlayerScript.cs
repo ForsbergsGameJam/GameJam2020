@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public GameObject closest_valid_trapzone = null;
+    public int current_lane = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,18 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float x = -100.0f;
+
+        switch(current_lane)
+        {
+            case 1: x = -4.0f; break;
+            case 2: x = 0.0f; break;
+            case 3: x = 4.0f; break;
+        }
+
+        if(x!= -100.0f)
+            GetComponent<CharacterController>().gameObject.transform.position = new Vector3(x,0.0f, GetComponent<CharacterController>().gameObject.transform.position.z);
+
         GetComponent<CharacterController>().transform.Translate(new Vector3(0.0f, 0.0f, 0.2f));
 
         // Check closest TrapZone
