@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrapZoneScript : MonoBehaviour
 {
     public int trap_lane = 1;
+    public int trap_type = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -16,17 +17,33 @@ public class TrapZoneScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = -100.0f;
+        float x = 0.0f;
 
         switch (trap_lane)
         {
             case 1: x = -4.0f; break;
             case 2: x = 0.0f; break;
-            case 3: x = 4.0f; break;
+            default: x = 4.0f; break;
         }
 
-        if(x != -100.0f) {
-            gameObject.GetComponentInChildren<Transform>().transform.position = new Vector3(x, 0.0f, gameObject.GetComponentInChildren<Transform>().transform.position.z);
-        }
+
+        switch (trap_type) {
+            case 1:
+                Component[] comps = GetComponentsInChildren<Transform>();
+
+                foreach (Component c in comps)
+                {
+                    if (c.name == "blade")
+                    {
+                        c.transform.position = new Vector3(x, 0.0f, c.transform.position.z);
+                        c.GetComponent<MeshRenderer>().enabled = true;
+                    }
+                    if (c.parent.name == "Street")
+                    {
+                    }
+                }
+                break;
+
+
     }
 }
