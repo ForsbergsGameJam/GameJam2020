@@ -26,7 +26,6 @@ public class TrapZoneScript : MonoBehaviour
         }
 
         if(x != -100.0f) {
-            Debug.Log("Test");
             gameObject.GetComponentInChildren<Transform>().transform.position = new Vector3(x, 0.0f, gameObject.GetComponentInChildren<Transform>().transform.position.z);
         }
     }
