@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour
         switch(current_lane)
         {
             case 1: x = -1.5f; break;
-            case 2: x = 0.5f; break;
+            case 2: x = 0.25f; break;
             default: x = 2.5f; break;
         }
 
@@ -42,7 +42,11 @@ public class PlayerScript : MonoBehaviour
 
         foreach (GameObject trapZone in trapZones)
         {
-            if (GetComponent<CharacterController>().transform.position.z > trapZone.transform.position.z)
+            if ( (GetComponent<CharacterController>().transform.position.z + 3.0f) > trapZone.transform.position.z)
+                continue;
+
+            //if just ground then cannot be valid trapzone
+            if (trapZone.GetComponent<TrapZoneScript>().trap_type == 0)
                 continue;
 
             //Debug.Log("player z: "+ GetComponent<CharacterController>().transform.position.z+"   trap zone z: " +trapZone.transform.position.z);
@@ -60,8 +64,11 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-        if (closest_valid_trapzone != null && Vector3.Distance(closest_valid_trapzone.transform.position, player_camera_pos) > 20.0f )
+        float required_distance_from_begin_to_player = 15.0f;
+
+        if (closest_valid_trapzone != null && Vector3.Distance(closest_valid_trapzone.transform.position, player_camera_pos) > required_distance_from_begin_to_player) 
             closest_valid_trapzone = null;
+
         return;
         if (closest_valid_trapzone)
             Debug.LogFormat("Closest TrapZone is " + closest_valid_trapzone.gameObject.name);

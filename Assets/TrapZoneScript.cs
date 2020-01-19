@@ -16,12 +16,14 @@ public class TrapZoneScript : MonoBehaviour
 
         int random_val = random.Next(1, 100);
 
-        if (random_val < 15)
+        if (random_val < 30)
         {
             trap_type = random.Next(2) + 1;
         }
         else
             trap_type = 0;
+
+        //trap_type = 2;
     }
 
     // Update is called once per frame
@@ -90,7 +92,7 @@ public class TrapZoneScript : MonoBehaviour
                     if (c.name == "sb2")
                     {
                         c.GetComponent<MeshRenderer>().enabled = true;
-                        c.transform.position = new Vector3(x, 0.1f, c.transform.position.z);
+                        c.transform.position = new Vector3(x, -0.8f, c.transform.position.z);
                     }
                 }
                 break;
