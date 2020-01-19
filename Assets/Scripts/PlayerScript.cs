@@ -12,6 +12,16 @@ public class PlayerScript : MonoBehaviour
     {
 
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.other.name == "blade")
+        {
+            //GAME OVER
+            Debug.Log("DÖR AV BLADE! andra="+collision.gameObject.name);
+            Application.LoadLevel(Application.loadedLevel);
+        }
+        
+    }
 
     // Update is called once per frame
     void Update()

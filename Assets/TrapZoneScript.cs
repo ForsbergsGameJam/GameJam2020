@@ -7,23 +7,28 @@ public class TrapZoneScript : MonoBehaviour
     public int trap_type = 0;
     public int trap_lane = 1;
     static private System.Random random = new System.Random();
+    private static int generated_zones = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (generated_zones < 4) { 
+            trap_type = 0;
+            generated_zones++;
+            return;
+        }
+
         trap_lane = random.Next(1, 3);
-        Debug.Log("trap lane "+trap_lane);
 
-        int random_val = random.Next(1, 100);
 
-        if (random_val < 40)
+        if (random.Next(1, 100) < 60)
         {
             trap_type = random.Next(2) + 1;
         }
         else
             trap_type = 0;
 
-        //trap_type = 2;
+        generated_zones++;
     }
 
     // Update is called once per frame
