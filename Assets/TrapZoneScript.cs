@@ -28,7 +28,7 @@ public class TrapZoneScript : MonoBehaviour
         else
             trap_type = 0;
 
-        trap_type = 2; //REMOVE
+        //trap_type = 2; //REMOVE
         generated_zones++;
     }
 
