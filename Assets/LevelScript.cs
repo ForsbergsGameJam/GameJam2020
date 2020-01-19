@@ -9,14 +9,21 @@ public class LevelScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		for (int i = 0; i < 250; i++)
+		for (int i = 0; i < 100; i++)
 		{
 			Instantiate(prefab_to_instantiate, new Vector3(0, 0, i * 2.25F), Quaternion.identity);
 		}
 
+        //Right side
         for (int i = 0; i < 50; i++)
         {
             Instantiate(skyscraper_prefab, new Vector3(9, 8, i * 10.0F), Quaternion.identity);
+        }
+
+        //Left side
+        for (int i = 0; i < 50; i++)
+        {
+            Instantiate(skyscraper_prefab, new Vector3(-9, 8, i * 10.0F), Quaternion.identity);
         }
     }
 

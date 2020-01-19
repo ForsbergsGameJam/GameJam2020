@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TrapZone
   - blade
+  - DrunkCamera
   layers:
   - Default
   - TransparentFX

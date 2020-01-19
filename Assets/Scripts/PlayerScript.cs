@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviour
         {
             //GAME OVER
             Debug.Log("DÖR AV BLADE! andra="+collision.gameObject.name);
+            TrapZoneScript.generated_zones = 0;
             Application.LoadLevel(Application.loadedLevel);
         }
         
@@ -35,7 +36,7 @@ public class PlayerScript : MonoBehaviour
             default: x = 2.5f; break;
         }
 
-        GetComponent<CharacterController>().gameObject.transform.position = new Vector3(x,-0.1f, GetComponent<CharacterController>().gameObject.transform.position.z);
+        GetComponent<CharacterController>().gameObject.transform.position = new Vector3(x,-1.0f, GetComponent<CharacterController>().gameObject.transform.position.z);
 
         GetComponent<CharacterController>().transform.Translate(new Vector3(0.0f, 0.0f, 0.03f));
 
