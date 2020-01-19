@@ -17,14 +17,14 @@ public class PlayerScript : MonoBehaviour
         if (collision.name == "blade")
         {
             //GAME OVER
-            Debug.Log("DÖR AV BLADE! andra="+collision.gameObject.name);
+            Debug.Log("DÖR AV BLADE! Startar om");
             TrapZoneScript.generated_zones = 0;
             Application.LoadLevel(Application.loadedLevel);
         }
         else if(collision.name == "sb1" && collision.GetComponentInParent<TrapZoneScript>().trap_lane != 2)
         {
             //GAME OVER
-            Debug.Log("DÖR AV HÅL!  ");
+            Debug.Log("DÖR AV HÅL! Startar om");
             TrapZoneScript.generated_zones = 0;
             Application.LoadLevel(Application.loadedLevel);
         }
