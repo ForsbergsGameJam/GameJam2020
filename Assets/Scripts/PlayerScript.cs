@@ -12,19 +12,21 @@ public class PlayerScript : MonoBehaviour
     {
 
     }
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.other.name);
-        if (collision.other.name == "blade")
+        if (collision.name == "blade")
         {
             //GAME OVER
             Debug.Log("DÖR AV BLADE! andra="+collision.gameObject.name);
             TrapZoneScript.generated_zones = 0;
             Application.LoadLevel(Application.loadedLevel);
         }
-        else if(collision.other.name == "sb2")
+        else if(collision.name == "sb1" && collision.GetComponentInParent<TrapZoneScript>().trap_lane != 2)
         {
-            Debug.Log("TEST");
+            //GAME OVER
+            Debug.Log("DÖR AV HÅL!  ");
+            TrapZoneScript.generated_zones = 0;
+            Application.LoadLevel(Application.loadedLevel);
         }
         
     }

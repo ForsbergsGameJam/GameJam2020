@@ -18,7 +18,7 @@ public class SwitchCamera : MonoBehaviour
     {
         TimeSpan ts = stopWatch.Elapsed;
 
-        if(ts.Seconds >= 8) //Drop the beat at 8 seconds in
+        if(ts.Seconds >= 1 /*8*/) //Drop the beat at 8 seconds in
         {
             GetComponent<Camera>().enabled = false;
         }
