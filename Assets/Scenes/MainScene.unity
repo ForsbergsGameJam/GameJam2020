@@ -149,8 +149,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 0.5849056, g: 0.56640023, b: 0.5159309, a: 1}
-  m_Intensity: 2.141593
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.141593
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -294,7 +294,7 @@ MonoBehaviour:
   useVolumetric: 1
   featuresFoldout: 1
   showAdditionalSettings: 0
-  displayLightIntensity: 2.141593
+  displayLightIntensity: 1.141593
   displayAreaLightEmissiveMesh: 0
   areaLightCookie: {fileID: 0}
   areaLightShadowCone: 120
@@ -922,7 +922,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 88044992a338e8d449b3c510fb0a852e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 88044992a338e8d449b3c510fb0a852e,
         type: 3}
