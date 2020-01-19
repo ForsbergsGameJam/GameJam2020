@@ -16,7 +16,7 @@ public class TrapZoneScript : MonoBehaviour
 
         int random_val = random.Next(1, 100);
 
-        if (random_val < 30)
+        if (random_val < 40)
         {
             trap_type = random.Next(2) + 1;
         }
@@ -53,7 +53,7 @@ public class TrapZoneScript : MonoBehaviour
             case 0:
                 foreach (Component c in comps)
                 {
-                    if (c.name == "s1" || c.name == "s2" || c.name == "s3")
+                    if (c.name == "s1" || c.name == "s2" || c.name == "s3" || c.name == "s4")
                     {
                         c.GetComponent<MeshRenderer>().enabled = true;
                     }
@@ -74,7 +74,7 @@ public class TrapZoneScript : MonoBehaviour
                         c.transform.position = new Vector3(x, 0.9f, c.transform.position.z);
                         c.GetComponent<MeshRenderer>().enabled = true;
                     }
-                    else if (c.name == "s1" || c.name == "s2" || c.name == "s3")
+                    else if (c.name == "s1" || c.name == "s2" || c.name == "s3" || c.name == "s4")
                     {
                         c.GetComponent<MeshRenderer>().enabled = true;
                     }
@@ -89,10 +89,14 @@ public class TrapZoneScript : MonoBehaviour
                     {
                         c.GetComponent<MeshRenderer>().enabled = true;
                     }
-                    if (c.name == "sb2")
+                    else if (c.name == "sb2")
                     {
                         c.GetComponent<MeshRenderer>().enabled = true;
                         c.transform.position = new Vector3(x, -0.8f, c.transform.position.z);
+                    }
+                    else if ( c.name == "s4")
+                    {
+                        c.GetComponent<MeshRenderer>().enabled = true;
                     }
                 }
                 break;

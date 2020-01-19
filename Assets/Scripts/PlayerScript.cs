@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
             default: x = 2.5f; break;
         }
 
-        GetComponent<CharacterController>().gameObject.transform.position = new Vector3(x,0.01f, GetComponent<CharacterController>().gameObject.transform.position.z);
+        GetComponent<CharacterController>().gameObject.transform.position = new Vector3(x,-0.1f, GetComponent<CharacterController>().gameObject.transform.position.z);
 
         GetComponent<CharacterController>().transform.Translate(new Vector3(0.0f, 0.0f, 0.03f));
 
