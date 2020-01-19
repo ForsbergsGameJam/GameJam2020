@@ -28,7 +28,7 @@ public class PlayerScript : MonoBehaviour
         if(x!= -100.0f)
             GetComponent<CharacterController>().gameObject.transform.position = new Vector3(x,0.0f, GetComponent<CharacterController>().gameObject.transform.position.z);
 
-        GetComponent<CharacterController>().transform.Translate(new Vector3(0.0f, 0.0f, 0.2f));
+        GetComponent<CharacterController>().transform.Translate(new Vector3(0.0f, 0.0f, 0.03f));
 
         // Check closest TrapZone
         GameObject[] trapZones = GameObject.FindGameObjectsWithTag("TrapZone");

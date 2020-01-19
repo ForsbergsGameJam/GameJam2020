@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class TrapZoneScript : MonoBehaviour
 {
+    public int trap_type = 0;
     public int trap_lane = 1;
-    public int trap_type = 1;
+    static private System.Random random = new System.Random();
 
     // Start is called before the first frame update
     void Start()
     {
-        System.Random random = new System.Random();
         trap_lane = random.Next(1, 3);
+        Debug.Log("trap lane "+trap_lane);
+
+        int random_val = random.Next(1, 100);
+
+        if (random_val < 15)
+        {
+            trap_type = random.Next(2) + 1;
+        }
+        else
+            trap_type = 0;
+
     }
 
     // Update is called once per frame
@@ -27,25 +38,76 @@ public class TrapZoneScript : MonoBehaviour
         }
 
 
-        switch (trap_type) {
-            case 1:
-                Component[] comps = GetComponentsInChildren<Transform>();
+        Component[] comps = GetComponentsInChildren<Component>();
 
+        //Initially hide everything
+        foreach (Component c in comps)
+        {
+            if(c.GetComponent<MeshRenderer>())
+            c.GetComponent<MeshRenderer>().enabled = false;
+        }
+
+            switch (trap_type) {
+            //Plain Ground
+            case 0:
                 foreach (Component c in comps)
                 {
+                    if (c.name == "blade")
+                    {
+                        c.GetComponent<MeshRenderer>().enabled = false;
+                    }
+                    if (c.name == "s1" || c.name == "s2" || c.name == "s3")
+                    {
+                        c.GetComponent<MeshRenderer>().enabled = true;
+                    }
+                }
+                break;
+            //Blade
+            case 1:
+                foreach (Component c in comps)
+                {
+                    foreach (MeshRenderer mr in c.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        mr.enabled = false;
+                    }
+
+                    //Render blade
                     if (c.name == "blade")
                     {
                         c.transform.position = new Vector3(x, 0.0f, c.transform.position.z);
                         c.GetComponent<MeshRenderer>().enabled = true;
                     }
-                    else if (c.name == "s1" || c.name == "s2" || c.name == "s3" || c.name == "sb1" || c.name == "sb2" )
+                    else if (c.name == "s1" || c.name == "s2" || c.name == "s3")
                     {
-                        c.GetComponent<MeshRenderer>().enabled = false;
+                        c.GetComponent<MeshRenderer>().enabled = true;
                     }
-
+                }
+            break;
+            //Hole
+            case 2:
+                foreach (Component c in comps)
+                {
+                    //Render street broken
+                    if(c.name == "sb1")
+                    {
+                        c.GetComponent<MeshRenderer>().enabled = true;
+                    }
+                    if (c.name == "sb2")
+                    {
+                        c.GetComponent<MeshRenderer>().enabled = true;
+                        c.transform.position = new Vector3(x, 0.0f, c.transform.position.z);
+                    }
+                    //hide other
+                    else if (c.name == "blade" || c.name == "sb2" || c.name == "s1" || c.name == "s2" || c.name == "s3")
+                    {
+                        foreach (MeshRenderer mr in c.GetComponentsInChildren<MeshRenderer>())
+                        {
+                            mr.enabled = false;
+                        }
+                    }
                 }
                 break;
 
-                }
         }
+    }
 }
