@@ -45,64 +45,72 @@ public class TrapZoneScript : MonoBehaviour
         }
 
 
-        Component[] comps = GetComponentsInChildren<Component>();
-
+        Transform[] comps = GetComponentsInChildren<Transform>();
+        
         //Initially hide everything
-        foreach (Component c in comps)
+        foreach (Transform c in comps)
         {
-            if(c.GetComponent<MeshRenderer>())
-            c.GetComponent<MeshRenderer>().enabled = false;
+            //Debug.Log("components: "+c.name);
+            c.gameObject.SetActive(false);
         }
+        gameObject.SetActive(true);
 
-            switch (trap_type) {
+        //Debug.Log("gameObject: " + gameObject.name);
+        switch (trap_type) {
             //Plain Ground
             case 0:
-                foreach (Component c in comps)
+                foreach (Transform c in comps)
                 {
-                    if (c.name == "s1" || c.name == "s2" || c.name == "s3" || c.name == "s4")
+                    if (c.gameObject.name == "s1" || c.gameObject.name == "s2" || c.gameObject.name == "s3" || c.gameObject.name == "s4" || c.gameObject.name == "Street")
                     {
-                        c.GetComponent<MeshRenderer>().enabled = true;
+                        c.gameObject.SetActive(true);
                     }
                 }
                 break;
             //Blade
             case 1:
-                foreach (Component c in comps)
+                foreach (Transform c in comps)
                 {
-                    foreach (MeshRenderer mr in c.GetComponentsInChildren<MeshRenderer>())
+
+                    if (c.gameObject.name == "Blade")
                     {
-                        mr.enabled = false;
+                        c.gameObject.SetActive(true);
                     }
 
                     //Render blade
-                    if (c.name == "blade")
+                    if (c.gameObject.name == "blade")
                     {
                         c.transform.position = new Vector3(x, 0.9f, c.transform.position.z);
-                        c.GetComponent<MeshRenderer>().enabled = true;
+                        c.gameObject.SetActive(true);
                     }
-                    else if (c.name == "s1" || c.name == "s2" || c.name == "s3" || c.name == "s4")
+                    else if (c.gameObject.name == "s1" || c.gameObject.name == "s2" || c.gameObject.name == "s3" || c.gameObject.name == "s4" || c.gameObject.name == "Street")
                     {
-                        c.GetComponent<MeshRenderer>().enabled = true;
+                        c.gameObject.SetActive(true);
                     }
                 }
             break;
             //Hole
             case 2:
-                foreach (Component c in comps)
+                foreach (Transform c in comps)
                 {
                     //Render street broken
-                    if(c.name == "sb1")
+                    if (c.gameObject.name == "StreetBroken")
                     {
-                        c.GetComponent<MeshRenderer>().enabled = true;
+                        c.gameObject.SetActive(true);
                     }
-                    else if (c.name == "sb2")
+
+                    if (c.gameObject.name == "sb1")
                     {
-                        c.GetComponent<MeshRenderer>().enabled = true;
+                        c.gameObject.SetActive(true);;
+                    }
+                    else if (c.gameObject.name == "sb2")
+                    {
+                        c.gameObject.SetActive(true);
                         c.transform.position = new Vector3(x, -0.8f, c.transform.position.z);
                     }
-                    else if ( c.name == "s4")
+                    else if ( c.gameObject.name == "s4" || c.gameObject.name == "Street")
                     {
-                        c.GetComponent<MeshRenderer>().enabled = true;
+                        c.gameObject.SetActive(true);
                     }
                 }
                 break;
