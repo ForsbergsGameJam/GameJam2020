@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public AudioSource[] all_sfx;
+    public AudioSource sfx;
+ 
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void Start()
+    {
+        StartCoroutine(WaitF());
+    }
+
+    IEnumerator WaitF()
+    {
+        yield return new WaitForSeconds(Random.Range(2,8));
+        all_sfx[Random.Range(0, 2)].Play();
+        StartCoroutine(WaitF());
     }
 }
