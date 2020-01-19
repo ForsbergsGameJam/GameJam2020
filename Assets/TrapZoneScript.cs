@@ -12,7 +12,7 @@ public class TrapZoneScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (generated_zones < 5) {  // 8
+        if (generated_zones < 8) {  // 8
             trap_type = 0;
             generated_zones++;
             return;
