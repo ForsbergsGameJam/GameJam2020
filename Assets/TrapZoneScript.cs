@@ -22,7 +22,6 @@ public class TrapZoneScript : MonoBehaviour
         }
         else
             trap_type = 0;
-
     }
 
     // Update is called once per frame
@@ -32,9 +31,9 @@ public class TrapZoneScript : MonoBehaviour
 
         switch (trap_lane)
         {
-            case 1: x = -4.0f; break;
-            case 2: x = 0.0f; break;
-            default: x = 4.0f; break;
+            case 1: x = -1.5f; break;
+            case 2: x = 0.5f; break;
+            default: x = 2.5f; break;
         }
 
 
@@ -52,10 +51,6 @@ public class TrapZoneScript : MonoBehaviour
             case 0:
                 foreach (Component c in comps)
                 {
-                    if (c.name == "blade")
-                    {
-                        c.GetComponent<MeshRenderer>().enabled = false;
-                    }
                     if (c.name == "s1" || c.name == "s2" || c.name == "s3")
                     {
                         c.GetComponent<MeshRenderer>().enabled = true;
@@ -74,7 +69,7 @@ public class TrapZoneScript : MonoBehaviour
                     //Render blade
                     if (c.name == "blade")
                     {
-                        c.transform.position = new Vector3(x, 0.0f, c.transform.position.z);
+                        c.transform.position = new Vector3(x, 0.9f, c.transform.position.z);
                         c.GetComponent<MeshRenderer>().enabled = true;
                     }
                     else if (c.name == "s1" || c.name == "s2" || c.name == "s3")
@@ -95,15 +90,7 @@ public class TrapZoneScript : MonoBehaviour
                     if (c.name == "sb2")
                     {
                         c.GetComponent<MeshRenderer>().enabled = true;
-                        c.transform.position = new Vector3(x, 0.0f, c.transform.position.z);
-                    }
-                    //hide other
-                    else if (c.name == "blade" || c.name == "sb2" || c.name == "s1" || c.name == "s2" || c.name == "s3")
-                    {
-                        foreach (MeshRenderer mr in c.GetComponentsInChildren<MeshRenderer>())
-                        {
-                            mr.enabled = false;
-                        }
+                        c.transform.position = new Vector3(x, 0.1f, c.transform.position.z);
                     }
                 }
                 break;
